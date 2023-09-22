@@ -17,7 +17,6 @@ const CurrencyConveter = () => {
 		setConvertedAmount(amount);
 		setAmount(convertedAmount);
 	};
-	console.log({ from, to });
 	const convert = () => {
 		setConvertedAmount(amount * currencyInfo[to]);
 	};
