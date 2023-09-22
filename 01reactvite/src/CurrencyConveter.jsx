@@ -5,7 +5,7 @@ import useCurrencyInfo from "./hooks/useCurrencyInfo";
 const CurrencyConveter = () => {
 	const [amount, setAmount] = useState(0);
 	const [from, setFrom] = useState("usd");
-	const [to, setTo] = useState("to");
+	const [to, setTo] = useState("inr");
 	const [convertedAmount, setConvertedAmount] = useState(0);
 
 	const currencyInfo = useCurrencyInfo(from);
@@ -17,7 +17,7 @@ const CurrencyConveter = () => {
 		setConvertedAmount(amount);
 		setAmount(convertedAmount);
 	};
-
+	console.log({ from, to });
 	const convert = () => {
 		setConvertedAmount(amount * currencyInfo[to]);
 	};
@@ -35,7 +35,7 @@ const CurrencyConveter = () => {
 								label="From"
 								amount={amount}
 								currencyOptions={options}
-								onCurrencyChange={(currency) => setAmount(amount)}
+								onCurrencyChange={(currency) => setFrom(currency)}
 								selectCurrency={from}
 								onAmountChange={(amount) => setAmount(amount)}
 							/>
@@ -54,7 +54,7 @@ const CurrencyConveter = () => {
 								amount={convertedAmount}
 								currencyOptions={options}
 								onCurrencyChange={(currency) => setTo(currency)}
-								selectCurrency={from}
+								selectCurrency={to}
 								amountDisable
 							/>
 						</div>
