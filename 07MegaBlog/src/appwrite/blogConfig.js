@@ -103,9 +103,11 @@ export class BlogService {
 	}
 	getFilePreview(fileId) {
 		try {
-			return this.storage.getFilePreview(config.appwriteBucketId, fileId);
+			return fileId
+				? this.storage.getFilePreview(config.appwriteBucketId, fileId)
+				: false;
 		} catch (error) {
-			console.error("Appwrite Service :: deletePost :: error  ", error);
+			console.error("Appwrite Service :: getFilePreview :: error  ", error);
 			//throw error;
 			return false;
 		}
